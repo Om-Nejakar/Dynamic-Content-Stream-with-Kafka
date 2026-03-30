@@ -22,7 +22,7 @@ To design a **real-time, adaptive content streaming platform** that integrates:
 ---
 
 ## 🏗️ System Architecture  
-<img width="1348" height="801" alt="image" src="https://github.com/user-attachments/assets/714e36f6-3827-48f8-9c59-44f7b6c4d059" />
+<img width="1348" height="801" alt="image" src="./assets//architecture.png" />
 
 
 
