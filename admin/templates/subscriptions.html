@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Subscriptions</title>
+    <meta http-equiv="refresh" content="15">
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f9fafb; margin: 20px; }
+        table { border-collapse: collapse; width: 100%; background: #fff; border-radius: 8px; }
+        th, td { padding: 10px; text-align: center; border-bottom: 1px solid #ddd; }
+        th { background-color: #3f51b5; color: white; }
+        tr:hover { background-color: #f1f1f1; }
+        a { text-decoration: none; color: #3f51b5; }
+    </style>
+</head>
+<body>
+    <h2>User Subscriptions</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>User</th>
+            <th>Topic</th>
+            <th>Subscribed At</th>
+        </tr>
+        {% for s in subs %}
+        <tr>
+            <td>{{ s.id }}</td>
+            <td>{{ s.user_name }}</td>
+            <td>{{ s.topic_name }}</td>
+            <td>{{ s.subscribed_at }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <a href="/">🏠 Home</a>
+</body>
+</html>
+

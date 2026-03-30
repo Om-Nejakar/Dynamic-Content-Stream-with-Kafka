@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel</title>
+    <style>
+        /* Overall Layout */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Top Bar */
+        .topbar {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+        }
+
+        .logout-btn {
+            background: #ef4444;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background: #dc2626;
+        }
+
+        /* Center Card */
+        .container {
+            background-color: #fff;
+            padding: 40px 60px;
+            border-radius: 16px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 400px;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .container:hover {
+            transform: translateY(-3px);
+        }
+
+        h1 {
+            color: #3f51b5;
+            margin-bottom: 30px;
+            font-size: 26px;
+        }
+
+        /* Button Links */
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            margin: 15px 0;
+        }
+
+        a {
+            display: inline-block;
+            background: #3f51b5;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 8px rgba(63,81,181,0.3);
+        }
+
+        a:hover {
+            background: #303f9f;
+            box-shadow: 0 5px 12px rgba(63,81,181,0.4);
+            transform: translateY(-2px);
+        }
+
+        /* Emojis */
+        a::before {
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 🔓 Logout Button -->
+    <div class="topbar">
+        <a href="/logout" class="logout-btn">🔓 Logout</a>
+    </div>
+
+    <!-- 🧭 Main Dashboard -->
+    <div class="container">
+        <h1>🎛️ Dynamic Content Stream Admin</h1>
+        <ul>
+            <li><a href="/topics">📋 View Topics</a></li>
+            <li><a href="/subscriptions">📡 View Subscriptions</a></li>
+        </ul>
+    </div>
+</body>
+</html>

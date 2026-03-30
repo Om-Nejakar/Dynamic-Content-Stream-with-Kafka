@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Topics Requested</title>
+    <meta http-equiv="refresh" content="10">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9fafb;
+            margin: 20px;
+        }
+        h2 {
+            color: #333;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #3f51b5;
+            color: white;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .status {
+            padding: 5px 10px;
+            border-radius: 6px;
+            color: white;
+            font-weight: bold;
+        }
+        .pending { background-color: #f4b400; }   /* yellow */
+        .approved { background-color: #0f9d58; }  /* green */
+        .rejected { background-color: #db4437; }  /* red */
+        .active { background-color: #4285f4; }    /* blue */
+        .inactive { background-color: #9e9e9e; }  /* grey */
+        a {
+            text-decoration: none;
+            color: #3f51b5;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .refresh {
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #3f51b5;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #303f9f;
+        }
+        .home-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #3f51b5;
+            text-decoration: none;
+        }
+        .home-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h2>Topics Requested</h2>
+
+    <div class="refresh">
+        <form method="get" action="/topics">
+            <button type="submit">🔄 Refresh Now</button>
+        </form>
+    </div>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Topic Name</th>
+            <th>Created By</th>
+            <th>Status</th>
+            <th>Last Updated</th>
+            <th>Action</th>
+        </tr>
+
+        {% for topic in topics %}
+        <tr>
+            <td>{{ topic.id }}</td>
+            <td>{{ topic.topic_name }}</td>
+            <td>{{ topic.created_by or '-' }}</td>
+            <td><span class="status {{ topic.status }}">{{ topic.status|capitalize }}</span></td>
+            <td>{{ topic.last_updated }}</td>
+            <td>
+                {% if topic.status == 'pending' %}
+                    <a href="/approve/{{ topic.id }}">✅ Approve</a> |
+                    <a href="/reject/{{ topic.id }}">❌ Reject</a>
+                {% elif topic.status == 'approved' %}
+                    ✅ Approved
+                {% elif topic.status == 'active' %}
+                    <a href="/deactivate/{{ topic.id }}">🛑 Deactivate</a>
+                {% elif topic.status == 'inactive' %}
+                    <a href="/reactivate/{{ topic.id }}">🔵 Activate</a>
+                {% elif topic.status == 'rejected' %}
+                    ❌ Rejected
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <a href="/" class="home-link">🏠 Back to Home</a>
+</body>
+</html>
+
